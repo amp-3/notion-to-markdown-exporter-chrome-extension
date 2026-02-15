@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 300px; padding: 16px; font-family: sans-serif; }
+    #addUrlBtn {
+      width: 100%;
+      padding: 10px;
+      background: #2eaadc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #addUrlBtn:disabled { background: #ccc; cursor: not-allowed; }
+    #addUrlStatus { margin-top: 8px; font-size: 13px; color: #666; }
+    .batch-section h4 {
+      margin: 0 0 8px 0;
+      font-size: 13px;
+      color: #333;
+    }
+    #batchUrls {
+      width: 100%;
+      height: 100px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 12px;
+      resize: vertical;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
+    #batchUrls::placeholder { color: #aaa; }
+    #batchExportBtn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      background: #e07c24;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    #batchExportBtn:disabled { background: #ccc; cursor: not-allowed; }
+    #batchProgress { margin-top: 8px; font-size: 12px; color: #666; word-break: break-all; }
+    #batchStatus { margin-top: 4px; font-size: 13px; color: #666; }
+
+    .export-options {
+      margin: 12px 0;
+      font-size: 13px;
+      color: #333;
+    }
+    .export-options h4 {
+      margin: 0 0 6px 0;
+      font-size: 13px;
+      color: #333;
+    }
+    .export-options label {
+      display: block;
+      margin: 4px 0;
+      cursor: pointer;
+    }
+    .export-options input[type="checkbox"] {
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+  <h3>Notion → Markdown</h3>
+
+  <div class="export-options">
+    <h4>エクスポートオプション</h4>
+    <label><input type="checkbox" id="includeImageFiles" checked>画像ファイルを含む</label>
+    <label><input type="checkbox" id="includeVideoFiles" checked>動画ファイルを含む</label>
+    <label><input type="checkbox" id="includeImageLinks" checked>画像へのリンクを含む</label>
+    <label><input type="checkbox" id="includeVideoLinks" checked>動画へのリンクを含む</label>
+  </div>
+
+  <div class="batch-section">
+    <h4>一括エクスポート</h4>
+    <button id="addUrlBtn">開いているページのURLを追加</button>
+    <div id="addUrlStatus"></div>
+    <textarea id="batchUrls" placeholder="NotionページのURLを1行に1つずつ入力&#10;https://www.notion.so/...&#10;https://www.notion.so/..."></textarea>
+    <button id="batchExportBtn">一括エクスポート</button>
+    <div id="batchProgress"></div>
+    <div id="batchStatus"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
