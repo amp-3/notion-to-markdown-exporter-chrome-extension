@@ -20,6 +20,8 @@ GitHubのMarkdownプレビューでの動画再生には対応していません
 - Chrome拡張のローカル処理で完結、APIキーを必要としない
   - Notionの仕様変更で正常に動作しなくなる可能性あり
 
+![alt text](<./doc/_resources/Snapshot 2026-02-16 10.03.13.png>)
+
 ## インストール
 
 1. このリポジトリの `notion-to-markdown` フォルダをローカルに用意する
@@ -190,6 +192,9 @@ notion-to-markdown/
 - **カラムレイアウト**: 横並びカラムは縦並びに変換
 - **動画再生**: VS Code（Cursor）での相対パス再生を確認済み
 - **動作確認環境**: Windows
+
+## 備考
+- 本ソフトウェアはClaude Codeを用いて実装されています。
 
 ## 免責事項
 
