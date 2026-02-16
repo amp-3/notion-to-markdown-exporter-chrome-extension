@@ -166,6 +166,21 @@ function getPageData(tabId, options) {
 // Content Scriptの注入
 async function injectContentScripts(tabId) {
   console.log("[SW] Injecting content scripts into tab:", tabId);
+
+  // 既に注入済みかチェック
+  try {
+    const [result] = await chrome.scripting.executeScript({
+      target: { tabId },
+      func: () => typeof NotionExporterConstants !== 'undefined',
+    });
+    if (result.result) {
+      console.log("[SW] Content scripts already injected, skipping");
+      return;
+    }
+  } catch {
+    // チェック失敗時は注入を試みる
+  }
+
   try {
     await chrome.scripting.executeScript({
       target: { tabId },

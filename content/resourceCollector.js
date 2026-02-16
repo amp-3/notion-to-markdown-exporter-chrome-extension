@@ -134,6 +134,13 @@ const ResourceCollector = (() => {
         }
 
         if (!response.ok) {
+          // fetchは成功したがHTTPエラーの場合もBackground経由でフォールバック
+          const result = await fetchViaBackground(entry.originalUrl);
+          if (result) {
+            entry.blob = result;
+            completed++;
+            continue;
+          }
           throw new Error(`HTTP ${response.status}: ${entry.originalUrl}`);
         }
 
